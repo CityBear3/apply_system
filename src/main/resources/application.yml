@@ -1,0 +1,10 @@
+flyway:
+  enabled: true
+  url: jdbc:mysql://127.0.0.1:53306/webapp
+  schemas: WEBAPP
+  user: root
+  password: mysql
+  baseline-on-migrate: true
+  baseline-version: 1.0.0
+  baseline-description: Initial
+  locations: classpath:db/migration
