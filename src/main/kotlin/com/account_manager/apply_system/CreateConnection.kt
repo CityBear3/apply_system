@@ -1,9 +1,9 @@
 package com.account_manager.apply_system
 
 import org.jetbrains.exposed.sql.Database
-import org.springframework.stereotype.Repository
+import org.springframework.stereotype.Component
 
-@Repository
+@Component
 class CreateConnection {
     fun connection() {
         Database.connect(
