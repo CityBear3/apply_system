@@ -11,8 +11,8 @@ import org.springframework.stereotype.Repository
 @Repository
 class UserRegisterRepositoryImpl(private val connector: CreateConnection) : UserRegisterRepository {
     override fun register(userid: String, username: String, userpassword: String, userrole: String): Boolean {
-        connector.connection()
         return kotlin.runCatching {
+            connector.connection()
             transaction {
                 val user = UserTable.insert {
                     it[id] = userid
