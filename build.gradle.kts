@@ -26,6 +26,8 @@ dependencies {
 	implementation("org.jetbrains.exposed:exposed-core:0.32.1")
 	implementation("org.jetbrains.exposed:exposed-dao:0.32.1")
 	implementation("org.jetbrains.exposed:exposed-jdbc:0.32.1")
+	implementation("org.springframework.session:spring-session-data-redis")
+	implementation("redis.clients:jedis")
 	implementation("org.springframework.boot:spring-boot-starter-thymeleaf")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 	testImplementation("org.springframework.security:spring-security-test")
