@@ -5,6 +5,7 @@ import com.account_manager.apply_system.model.UserInfoModel
 import com.account_manager.apply_system.model.UserTable
 import org.jetbrains.exposed.sql.StdOutSqlLogger
 import org.jetbrains.exposed.sql.addLogger
+import org.jetbrains.exposed.sql.select
 import org.jetbrains.exposed.sql.selectAll
 import org.jetbrains.exposed.sql.transactions.transaction
 import org.springframework.http.HttpStatus
@@ -19,7 +20,7 @@ class UserListRepositoryImpl(private val connector: CreateConnection) : UserList
             connector.connection()
             transaction {
                 addLogger(StdOutSqlLogger)
-                val userInfo = UserTable.selectAll()
+                val userInfo = UserTable.slice(UserTable.id, UserTable.name).selectAll()
                 userInfo.map {
                     val info = UserInfoModel(it[UserTable.id], it[UserTable.name])
                     list.add(info)
