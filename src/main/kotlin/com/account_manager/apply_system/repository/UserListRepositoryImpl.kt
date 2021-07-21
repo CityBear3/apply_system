@@ -5,7 +5,6 @@ import com.account_manager.apply_system.model.UserInfoModel
 import com.account_manager.apply_system.model.UserTable
 import org.jetbrains.exposed.sql.StdOutSqlLogger
 import org.jetbrains.exposed.sql.addLogger
-import org.jetbrains.exposed.sql.select
 import org.jetbrains.exposed.sql.selectAll
 import org.jetbrains.exposed.sql.transactions.transaction
 import org.springframework.http.HttpStatus
