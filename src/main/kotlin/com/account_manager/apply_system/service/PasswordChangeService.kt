@@ -8,13 +8,16 @@ import org.springframework.security.core.context.SecurityContextHolder
 import org.springframework.stereotype.Service
 
 @Service
-class PasswordChangeService(private val passwordChangeRepository: PasswordChangeRepository) {
+class PasswordChangeService(
+    private val passwordChangeRepository: PasswordChangeRepository,
+    private val userInfoService: UserInfoService
+) {
     fun passwordChange(newUserInfo: NewUserInfoModel): ResponseEntity<String> {
         if (newUserInfo.newPassword != newUserInfo.checkPassword) {
-            return ResponseEntity("Your new password is different on both", HttpStatus.INTERNAL_SERVER_ERROR)
+            return ResponseEntity("Your new password is different on both", HttpStatus.BAD_REQUEST)
         }
 
-        val userInfo = SecurityContextHolder.getContext().authentication.principal as ApplyUserDetail
+        val userInfo = userInfoService.getUserInfo()
         val result = passwordChangeRepository.changer(newUserInfo.newPassword, userInfo.id)
         return if (result) {
             ResponseEntity("Succeed to change password", HttpStatus.OK)
