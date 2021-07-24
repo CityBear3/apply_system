@@ -39,6 +39,6 @@ internal class PasswordChangeServiceTest {
         val expected = HttpStatus.BAD_REQUEST
 
         doReturn(applyUserDetail).whenever(userInfoService).getUserInfo()
-        Assertions.assertEquals(HttpStatus.BAD_REQUEST, passwordChangeService.passwordChange(userInfo).statusCode)
+        Assertions.assertEquals(expected, passwordChangeService.passwordChange(userInfo).statusCode)
     }
 }
