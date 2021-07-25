@@ -34,4 +34,4 @@ jobs:
 
       # Runs a gradle test
       - name: Test with Gradle
-        run: ./gradlew build
+        run: chmod +x ./gradlew build
