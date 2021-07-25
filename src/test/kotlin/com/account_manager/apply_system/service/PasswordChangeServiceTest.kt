@@ -17,13 +17,14 @@ internal class PasswordChangeServiceTest {
 
     private val passwordChangeService = PasswordChangeService(passwordChangeRepository, userInfoService)
 
+    private val applyUserDetail = ApplyUserDetail("testID", "tester", "password", RoleType.NORMAL.toString())
+
     @Test
     fun `ok when to change password is succeed`() {
         val pass = "password"
         val checkPass = "password"
         val userInfo = NewUserInfoModel(pass, checkPass)
         val expected = true
-        val applyUserDetail = ApplyUserDetail("testID", "tester", "password", RoleType.NORMAL.toString())
 
         doReturn(expected).whenever(passwordChangeRepository).changer(pass, applyUserDetail.id)
         doReturn(applyUserDetail).whenever(userInfoService).getUserInfo()
@@ -31,11 +32,25 @@ internal class PasswordChangeServiceTest {
     }
 
     @Test
+    fun `server_error when to change password is failed`() {
+        val pass = "password"
+        val checkPass = "password"
+        val userInfo = NewUserInfoModel(pass, checkPass)
+        val expected = false
+
+        doReturn(expected).whenever(passwordChangeRepository).changer(pass, applyUserDetail.id)
+        doReturn(applyUserDetail).whenever(userInfoService).getUserInfo()
+        Assertions.assertEquals(
+            HttpStatus.INTERNAL_SERVER_ERROR,
+            passwordChangeService.passwordChange(userInfo).statusCode
+        )
+    }
+
+    @Test
     fun `bad request when validation of password is failed`() {
         val pass = "1234"
         val wrongPass = "1235"
         val userInfo = NewUserInfoModel(pass, wrongPass)
-        val applyUserDetail = ApplyUserDetail("testID", "tester", "password", RoleType.NORMAL.toString())
         val expected = HttpStatus.BAD_REQUEST
 
         doReturn(applyUserDetail).whenever(userInfoService).getUserInfo()
