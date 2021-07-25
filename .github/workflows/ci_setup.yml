@@ -29,6 +29,7 @@ jobs:
       - name: Setup Java JDK
         uses: actions/setup-java@v2
         with:
+          distribution: 'zulu'
           java-version: 11
 
       # Runs a gradle test
