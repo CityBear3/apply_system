@@ -30,8 +30,8 @@ jobs:
         uses: actions/setup-java@v2
         with:
           distribution: 'zulu'
-          java-version: 11
+          java-version: 16
 
       # Runs a gradle test
       - name: Test with Gradle
-        run: chmod +x ./gradlew build
+        run: ./gradlew build
