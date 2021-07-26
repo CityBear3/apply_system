@@ -1,6 +1,5 @@
 package com.account_manager.apply_system.model
 
-
 import org.jetbrains.annotations.NotNull
 import org.jetbrains.exposed.sql.Table
 
