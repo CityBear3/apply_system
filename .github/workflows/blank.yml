@@ -29,7 +29,7 @@ jobs:
       - name: Setup for java JDK
         uses: actions/setup-java@v1
         with:
-          java-vresion: 16
+          java-version: 16
 
       # Runs a gradlew command
       - name: Run a gradlew test
