@@ -10,7 +10,5 @@ import org.springframework.web.bind.annotation.RestController
 @RestController
 class OrderReceiveController(private val orderReceiveService: OrderReceiveService) {
     @PostMapping("/order")
-    fun order(@RequestBody request: RequestModel): ResponseEntity<String> {
-        return orderReceiveService.receiveOrder(request)
-    }
+    fun order(@RequestBody request: RequestModel): ResponseEntity<String> = orderReceiveService.receiveOrder(request)
 }
