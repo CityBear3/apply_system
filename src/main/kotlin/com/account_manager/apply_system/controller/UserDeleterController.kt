@@ -7,8 +7,6 @@ import org.springframework.web.bind.annotation.*
 @RestController
 @RequestMapping("/admin")
 class UserDeleterController(private val userDeleterService: UserDeleterService) {
-    @DeleteMapping("/delete/{id}")
-    fun delete(@PathVariable("id") id: String): ResponseEntity<String> {
-        return userDeleterService.userDeleter(id)
-    }
+    @DeleteMapping("/user/delete/{id}")
+    fun delete(@PathVariable("id") id: String): ResponseEntity<String> = userDeleterService.userDeleter(id)
 }
