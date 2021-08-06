@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController
 
 @RestController
 class PasswordChangeController(private val passwordChangeService: PasswordChangeService) {
-    @PostMapping("change")
+    @PostMapping("/user/password")
     fun change(@RequestBody request: NewUserInfoModel): ResponseEntity<String> {
         return passwordChangeService.passwordChange(request)
     }

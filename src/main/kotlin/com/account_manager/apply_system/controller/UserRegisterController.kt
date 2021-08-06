@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController
 @RestController
 @RequestMapping("/admin")
 class UserRegisterController(private val userRegisterService: UserRegisterService) {
-    @PostMapping("/registration")
+    @PostMapping("/user/registration")
     fun registration(@RequestBody request: UserRegisterModel):  ResponseEntity<String> {
         return userRegisterService.userRegister(request.id, request.name, request.password, request.role)
     }

@@ -9,8 +9,6 @@ import org.springframework.web.bind.annotation.RestController
 @RestController
 @RequestMapping("admin")
 class UserListController(private val userListService: UserListService) {
-    @GetMapping("list")
-    fun list(): MutableList<UserInfoModel> {
-        return userListService.getUserList()
-    }
+    @GetMapping("/user/list")
+    fun list(): MutableList<UserInfoModel> = userListService.getUserList()
 }
