@@ -13,7 +13,7 @@ import org.springframework.stereotype.Repository
 @Suppress("SpringJavaInjectionPointsAutowiringInspection")
 @Repository
 class UserListRepositoryImpl(private val connector: CreateConnection) : UserListRepository {
-    override fun viewAll(): MutableList<UserInfoModel> {
+    override fun viewAll(): MutableList<UserInfoModel>? {
         val list = mutableListOf<UserInfoModel>()
         return kotlin.runCatching {
             connector.connection()
@@ -28,8 +28,7 @@ class UserListRepositoryImpl(private val connector: CreateConnection) : UserList
         }.fold (
             onSuccess = {return@fold list},
             onFailure = {
-                val info = UserInfoModel(HttpStatus.INTERNAL_SERVER_ERROR.toString(), "Failed to get user list.")
-                return@fold mutableListOf<UserInfoModel>(info)
+                return@fold null
             }
         )
     }
