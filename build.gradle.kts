@@ -30,6 +30,7 @@ dependencies {
 	implementation("org.springframework.session:spring-session-data-redis")
 	implementation("redis.clients:jedis")
 	implementation("org.springframework.boot:spring-boot-starter-thymeleaf")
+	implementation("org.springframework.boot:spring-boot-starter-aop")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 	testImplementation("org.springframework.security:spring-security-test")
 	testImplementation("org.junit.jupiter:junit-jupiter-engine:5.7.1")
